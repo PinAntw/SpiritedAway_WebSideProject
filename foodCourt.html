@@ -1,11 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+
+        #background-container {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-image: url("./image/油屋.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.1;
+            z-index: -1; 
+        }
+
+        #content-container {
+            text-align: start;
+            padding-top: 15%;
+            padding-left: 15%;
+        }
+        
+
+        .highlight {
+            position: absolute;
+            border: 2px solid #ff0;
+            background-color: rgba(255, 255, 0, 0.5);
+        }
+
+        #pacman {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #f2d648;
+            position: relative;
+            margin-top: 20px;
+            display: none; 
+        }
+        #pacmanEye {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            top: 20px;
+            right: 40px;
+            background: #333333;
+        }
+        #pacmanMouth {
+            background: #000;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+            animation-name: eat;
+            animation-duration: 0.7s;
+            animation-iteration-count: infinite;
+        }
+        #pacmanFood {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: green;
+            border-radius: 50%;
+            top: 40%;
+            left: 220px;
+            animation-name: food;
+            animation-duration: 0.7s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes eat {
+            0% {
+                clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+            }
+            25% {
+                clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
+            }
+            50% {
+                clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
+            }
+            75% {
+                clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
+            }
+            100% {
+                clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
+            }
+        }
+        @keyframes food {
+            0% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100px);
+                opacity: 0;
+            }
+        }
+    </style>
+    
     <title>Food</title>
 </head>
 <body>
-    
+    <div id="background-container"></div> 
+    <table id="content-container">
+        <tr style="height: 700px;">
+            <td>
+                <div id="content">
+                    <img id="main-image" src="./image/九份.jpg" alt="九份" width="500px" usemap="#image-map" style="position:relative;">
+        
+                    <map name="image-map">
+                        <area target="_blank" alt="阿婆魚羹" title="阿婆魚羹" href="#" coords="78,216,137,229" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="舊道口牛肉麵" title="舊道口牛肉麵" href="#" coords="145,233,214,248" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="魚丸伯仔" title="魚丸伯仔" href="https://maps.app.goo.gl/cGcpkhDRi63rXA528" coords="82,196,126,209" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="九重町客棧" title="九重町客棧" href="https://maps.app.goo.gl/1FWUve5KhVMLZyES8" coords="63,155,130,170" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="九份老麵店" title="九份老麵店" href="https://maps.app.goo.gl/PkxzXUrsfAfXtP857" coords="74,133,137,146" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="金枝紅糟素肉圓" title="金枝紅糟素肉圓" href="https://maps.app.goo.gl/jokc4omhHGYpNBg46" coords="102,83,170,107" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="九金店" title="九金店" href="https://maps.app.goo.gl/UyZhZcCDGUvJWuDj7" coords="155,138,200,153" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="金枝紅糟素肉圓" title="九份金枝紅糟肉圓(二店）" href="https://maps.app.goo.gl/3ptGsu7YeHqJWXAd8" coords="176,110,213,134" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="郵局前油蔥粿" title="郵局前油蔥粿" href="https://maps.app.goo.gl/kcwsazwS7E8H7s4s5" coords="220,122,252,150" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="阿蘭草仔粿" title="阿蘭草仔粿" href="https://maps.app.goo.gl/3imQ9zmExkDK4jm68" coords="259,104,299,124" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="賴阿婆芋圓" title="賴阿婆芋圓" href="https://maps.app.goo.gl/dmwzDEZn693xRgxt9" coords="212,68,286,85" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="阿妹茶樓" title="阿妹茶樓" href="https://maps.app.goo.gl/9fxhYSqVTBveXHm9A" coords="292,134,330,156" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="悲情城市" title="悲情城市" href="https://maps.app.goo.gl/yaUGwYAoGqqMTwA79" coords="343,126,397,146" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="九份茶坊" title="九份茶坊" href="https://maps.app.goo.gl/xx7fXVg55B1wHY4U8" coords="346,71,409,87" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="阿柑姨芋圓" title="阿柑姨芋圓" href="https://maps.app.goo.gl/BkupmQnZVQNTNtjC7" coords="321,32,406,53" shape="rect" onclick="highlightArea(event, this)">
+                        <area target="_blank" alt="李儀餅店" title="李儀餅店" href="https://maps.app.goo.gl/Y8r8qN5HCCbpLGFE6" coords="95,262,151,283" shape="rect" onclick="highlightArea(event, this)">
+                    </map>
+                </div>
+        
+            </td>
+            <td style="padding-left: 50px;">
+                <div id="pacman">
+                    <div id="pacmanEye"></div>
+                    <div id="pacmanMouth"></div>
+                    <div id="pacmanFood"></div>
+                </div>
+                <iframe id="info-iframe" style="display:none; width: 500px; height: 700px;"></iframe>
+            </td>
+        </tr>
+        
+    </table>
+    <script>
+        function pacmanAnimation(callback) {
+            const pacman = document.getElementById('pacman');
+            const pacmanMouth = document.getElementById('pacmanMouth');
+            const pacmanFood = document.getElementById('pacmanFood');
+
+            pacman.style.display = 'block';
+            pacmanMouth.style.animationPlayState = 'running';
+            pacmanFood.style.animationPlayState = 'running';
+
+            setTimeout(() => {
+                pacmanMouth.style.animationPlayState = 'paused';
+                pacmanFood.style.animationPlayState = 'paused';
+                pacman.style.display = 'none';
+                if (callback) callback();
+            }, 3000); 
+        }
+
+        function highlightArea(event, area) {
+            var frame = document.getElementById('info-iframe');
+            frame.style.display = 'none';
+
+            event.preventDefault(); // 一開始不要打開連結
+
+            document.querySelectorAll('.highlight').forEach(temp => temp.remove());
+
+            const coords = area.coords.split(',').map(coord => parseInt(coord));
+
+            const highlight = document.createElement('div');
+            highlight.classList.add('highlight');
+            
+            const [x1, y1, x2, y2] = coords;
+            highlight.style.left = `${x1}px`;
+            highlight.style.top = `${y1}px`;
+            highlight.style.width = `${x2 - x1}px`;
+            highlight.style.height = `${y2 - y1}px`;
+            
+            const img = document.getElementById('main-image');
+            const imgRect = img.getBoundingClientRect();
+            highlight.style.left = `${imgRect.left + window.scrollX + coords[0]}px`;
+            highlight.style.top = `${imgRect.top + window.scrollY + coords[1]}px`;
+
+            document.body.appendChild(highlight);
+
+            var storeName = area.alt + '.html'
+            console.log(storeName)
+            pacmanAnimation(() => {
+                const iframe = document.getElementById('info-iframe');
+                iframe.style.display = 'block';
+                iframe.src = './foodDescription/' + storeName;
+            });
+        }
+    </script>
 </body>
 </html>
