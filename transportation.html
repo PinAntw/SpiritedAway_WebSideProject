@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+        rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <link rel="stylesheet" 
+        href="https://code.jquery.com/ui/1.12.1/themes/Humanity/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <style>
+        body, html {
+            margin: 0;
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+
+        #frames-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 100px;
+            align-items: top;
+            width: 100%;
+            height: 50vh;
+            position: relative;
+            animation: moveFrames 50s linear;
+        }
+
+        .frame img {
+            border: solid 2px;
+            border-bottom-color: #ffe;
+            border-left-color: #eed;
+            border-right-color: #eed;
+            border-top-color: #ccb;
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .frame {
+            background-color: #ddc;
+            border: solid 5vmin;
+            border-bottom-color: #d5512cc1;
+            border-left-color: #d06c50c1;
+            border-right-color: #d06c50c1;
+            border-top-color: #d5512cc1;
+            box-shadow: 0 0 5px 0 rgba(0,0,0,.25) inset, 0 5px 10px 5px rgba(0,0,0,.25);
+            box-sizing: border-box;
+            height: 30vh;
+            width: 25vw;
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            flex: none;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .frame:before {
+            bottom: -2vmin;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.25) inset;
+            content: "";
+            left: -2vmin;
+            position: absolute;
+            right: -2vmin;
+            top: -2vmin;
+        }
+
+        .frame:after {
+            bottom: -2.5vmin;
+            box-shadow: 0 2px 5px 0 rgba(0,0,0,.25);
+            content: "";
+            left: -2.5vmin;
+            position: absolute;
+            right: -2.5vmin;
+            top: -2.5vmin;
+        }
+
+        .wheels {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            bottom: -70px;
+            left: 10%;
+            width: 80%;
+        }
+
+        .wheel {
+            background-color: #333;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .wheel::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            border-radius: 50%;
+            width: 25%;
+            height: 25%;
+        }
+
+        @keyframes moveFrames {
+            0% {
+                transform: translateX(50%);
+            }
+            100% {
+                transform: translateX(-1500%);
+            }
+        }
+
+        .train img {
+            margin-right: 25px;
+            margin-top: 0px;
+            height: 33vh;
+            border-top-color: white;
+            border-right-color: white;
+        }
+
+        .blurred {
+            filter: blur(10px);
+            /* 讓除了圖片外的區域都不能點擊 */
+            pointer-events: none;
+        }
+
+        /* 放大圖片容器 */
+        .enlarged-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .enlarged-container img {
+            max-width: 50vw;
+            max-height: 50vh;
+        }
+
+        #schedule {
+           margin-left: 5%;
+        }
+        #schedule {
+            display: flex;
+            justify-content: flex-start; 
+            align-items: center; 
+            padding: 0px; 
+            background-color: #fff; 
+        }
+
+        #schedule .left {
+            flex: 1; 
+            margin-right: 20px; 
+        }
+
+        #schedule .left img {
+            max-width: 100%; 
+            /* display: block;  */
+        }
+
+        #schedule .right {
+            flex: 1; 
+        }
+
+        #theButtonSet {
+            width: 100%; 
+            border-collapse: collapse; 
+        }
+
+        #theButtonSet td {
+            padding: 0px; 
+            text-align: center;
+            /* border: 1px solid #ccc;  */
+        }
+
+        #theButtonSet button:hover {
+            background-color: #0ce374; /* 按鈕懸停時的背景色 */
+        }
+
+        #fareMap {
+            margin-left: 10px;
+        }
+
+        .t {
+            padding-right: 100px;
+        }
+
+        #btn #btn-light {
+            background-color: #fff;
+        }
+
+        #transportationContent {
+            margin-top: 50px;
+        }
+        .hide {
+            display: none;
+        }
+        #theMethod tr:hover {
+            background-color: #0ce374;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const images = [];
+
+        for (let i = 1; i <= 43; i++) {
+            const imageNumber = i.toString().padStart(3, '0');
+            const imagePath = `./image/transportation/chihiro${imageNumber}.jpg`;
+            images.push(imagePath);
+        }
+    </script>
+</head>
+<body>
+    <div id="frames-container">
+        <div class="train">
+            <img src="./image/transportation/train.png" alt="train">
+        </div>
+    </div>
+
+    <div id="fareMap" class="container">
+        <div class="row">
+            <div class="col-12 col-md-5">
+                <img src="./image/transportation/map.png" alt="map" class="img-fluid" id="mapInTaipei">
+            </div>
+            <div class="col-12 col-md-7">
+                <table id="theButtonSet" class="table">
+                    <tr>
+                        <td><b>交通方式</b></td>
+                        <td><button class="btn btn-light">客運</button></td>
+                        <td><button class="btn btn-light">火車</button></td>
+                    </tr>
+                    <tr>
+                        <td><b>出發地點</b></td>
+                        <td><button class="btn btn-light">西門站</button></td>
+                        <td><button class="btn btn-light">忠孝復興站</button></td>
+                        <td><button class="btn btn-light">台北車站</button></td>
+                        <td><button class="btn btn-light">松山車站</button></td>
+                    </tr>
+                </table>
+                <div id="transportationContent">
+                    <table id="theMethod">
+                        <tr>
+                            <td class="t">客運</td>
+                            <td class="start">忠孝復興站</td>
+                        </tr>
+                        <tr>
+                            <td class="t">客運</td>
+                            <td class="start">西門站</td>
+                        </tr>
+                        <tr>
+                            <td class="t">客運</td>
+                            <td class="start">松山車站</td>
+                        </tr>
+                        <tr>
+                            <td class="t">火車</td>
+                            <td class="start">台北車站</td>
+                        </tr>
+                        <tr>
+                            <td class="t">火車</td>
+                            <td class="start">松山車站</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="mapDialog">
+            <p id="mapContent"></p>
+        </div>
+    </div>
+    <script>
+        const frameContainer = document.getElementById('frames-container');
+
+        // 創建圖片框架
+        images.forEach((imagePath) => {
+            const frame = document.createElement('div');
+            frame.className = 'frame';
+
+            const img = document.createElement('img');
+            img.src = imagePath;
+            frame.appendChild(img);
+
+            const wheels = document.createElement('div');
+            wheels.className = 'wheels';
+
+            for (let i = 0; i < 2; i++) {
+                const wheel = document.createElement('div');
+                wheel.className = 'wheel';
+                wheels.appendChild(wheel);
+            }
+
+            frame.addEventListener('click', () => {
+                frameContainer.style.animationPlayState = 'paused';
+                frameContainer.classList.add('blurred');
+
+                // 創建放大圖片容器
+                const enlargedContainer = document.createElement('div');
+                enlargedContainer.className = 'enlarged-container';
+
+                const enlargedImg = document.createElement('img');
+                enlargedImg.src = img.src;
+                enlargedContainer.appendChild(enlargedImg);
+
+                document.body.appendChild(enlargedContainer);
+
+                // 添加點擊事件以恢復動畫和移除放大圖片
+                enlargedContainer.addEventListener('click', () => {
+                    frameContainer.style.animationPlayState = 'running';
+                    frameContainer.classList.remove('blurred');
+                    document.body.removeChild(enlargedContainer);
+                });
+            });
+
+            frame.appendChild(wheels);
+            frameContainer.appendChild(frame);
+        });
+
+        $('#mapDialog').dialog({
+            autoOpen: false
+        });
+    </script>
+</body>
+<script>
+    $("#theButtonSet button").click(function(){
+        var buttonText = $(this).text();
+        console.log(buttonText);
+        $(this).toggleClass("btn-light btn-dark");
+
+        var darkButtons = $(".btn-dark");
+        var darkButtonTexts = darkButtons.map(function() {
+            return $(this).text();
+        }).get();
+        // console.log("Dark buttons:", darkButtonTexts);
+
+        $("#theMethod tr").each(function() {
+            var texts = $(this).find('td').map(function() {
+                return $(this).text();
+            }).get();
+
+            var total = texts.join(', ');
+            var hide = false
+            // 看有沒有存在字元
+            darkButtonTexts.forEach(function(darkButtonText) {
+                if (total.includes(darkButtonText)) {
+                    hide = true;
+                }
+            });
+
+            if (hide) {
+                $(this).addClass("hide");
+            } else {
+                $(this).removeClass("hide");
+            }
+        });
+    });
+    $("#theMethod tr").click(function(){
+        var start = $(this).find('.start').text(); //起始
+        var method = $(this).find('.t').text(); //交通方式
+        console.log(start, method)
+        
+        if(start == "忠孝復興站") {
+            $("#mapInTaipei").attr("src","./image/transportation/map_zhongxiao.png")
+        } else if(start == "西門站"){
+            $("#mapInTaipei").attr("src","./image/transportation/map_ximen.png")
+        } else if(start == "松山車站"){
+            $("#mapInTaipei").attr("src","./image/transportation/map_songshan.png")
+        } else if(start == "台北車站"){
+            $("#mapInTaipei").attr("src","./image/transportation/map_taipei.png")
+        } 
+        $('#mapDialog').dialog('open');
+        
+        $('#mapContent').text(`You choose the method from ${start} to Jiufen Old Street by ${method}`);
+        $('#mapContent').append(". Enjoy your trip!");
+
+    });
+</script>
+</html>
