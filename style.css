@@ -578,6 +578,27 @@ iframe:hover {
     width: 150px;
     cursor: pointer;
 }
+.btn_map3{
+    position: absolute;
+    right: 500px;
+    top: 500px;
+    width: 150px;
+    cursor: pointer;
+}
+.btn_map4{
+    position: absolute;
+    right: 980px;
+    top: 560px;
+    width: 150px;
+    cursor: pointer;
+}
+.btn_map5{
+    position: absolute;
+    right: 980px;
+    top: 300px;
+    width: 150px;
+    cursor: pointer;
+}
 .btn_transpa{
     background-color: rgba(255, 255, 255, 0.5); 
     padding: 10px 20px;
@@ -601,10 +622,43 @@ iframe:hover {
     height: 250px;
     display: none;
 }
+.img_map3{
+    position: absolute;
+    right: 438px;
+    top: 350px; 
+    width: 330px;
+    height: 150px;
+    display: none;
+}
+.img_map4{
+    position: absolute;
+    right: 750px;
+    top: 520px; 
+    width: 450px;
+    height: 200px;
+    display: none;
+}
+.img_map5{
+    position: absolute;
+    right: 740px;
+    top: 320px; 
+    width: 250px;
+    height: 200px;
+    display: none;
+}
 .button_ctn:hover .img_map1{
     display: block;
 }
 .button_ctn:hover .img_map2{
+    display: block;
+}
+.button_ctn:hover .img_map3{
+    display: block;
+}
+.button_ctn:hover .img_map4{
+    display: block;
+}
+.button_ctn:hover .img_map5{
     display: block;
 }
 
