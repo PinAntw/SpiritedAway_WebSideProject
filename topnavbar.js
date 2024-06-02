@@ -63,9 +63,6 @@ function setImg(){
             break;
         case 2:
             img.src = 'image/homepage/jiouFen.jpg';
-            break;
-        case 3:
-            img.src = 'image/homepage/spring1.jpg';
             img_container.style.display = 'block';
             img.style.height = '500px';
             img_container.style.height = '500px';
@@ -73,10 +70,26 @@ function setImg(){
             news.style.textAlign = "center";
             news.style.fontSize = "35px";
             news.style.height = '170px';
-            
+            break;
+        case 3:
+            img.src = 'image/transportation/chihiro047.jpg';
+            img_container.style.display = 'block';
+            img.style.height = '500px';
+            img_container.style.height = '500px';
+            news.innerHTML = "員工應徵 / 加入我們吧!" ;
+            news.style.textAlign = "center";
+            news.style.fontSize = "35px";
+            news.style.height = '170px';
             break;
         case 4: 
-            img.src = 'image/homepage/spring2.jpg';
+            img.src = 'image/transportation/chihiro042.jpg';
+            img_container.style.display = 'block';
+            img.style.height = '500px';
+            img_container.style.height = '500px';
+            news.innerHTML = "員工應徵 / 加入我們吧!" ;
+            news.style.textAlign = "center";
+            news.style.fontSize = "35px";
+            news.style.height = '170px';
             break; 
         default:
             img.src = 'image/homepage/spring3.jpg';
