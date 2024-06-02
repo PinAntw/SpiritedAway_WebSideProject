@@ -279,7 +279,7 @@
         </div>
     </div>
     <div>
-        <div id="mapDialog">
+        <div id="mapDialog" title="交通資訊">
             <p id="mapContent"></p>
         </div>
     </div>
@@ -386,6 +386,11 @@
         
         $('#mapContent').text(`You choose the method from ${start} to Jiufen Old Street by ${method}`);
         $('#mapContent').append(". Enjoy your trip!");
+        if(start == "忠孝復興站" && method == "客運"){
+            $('#mapContent').append('<img src="./image/transportation/1062-bus.jpeg" alt="1062-bus" style="width: 200px;">');
+        } else if(start == "西門站" && method == "客運"){
+            $('#mapContent').append('<img src="./image/transportation/965-bus.jpeg" alt="965-bus" style="width: 200px;">');
+        }
 
     });
 </script>
