@@ -570,7 +570,13 @@ iframe:hover {
     top: 180px;
     width: 120px;
     cursor: pointer;
-    
+}
+.btn_map2{
+    position: absolute;
+    right: 550px;
+    top: 180px;
+    width: 150px;
+    cursor: pointer;
 }
 .btn_transpa{
     background-color: rgba(255, 255, 255, 0.5); 
@@ -580,14 +586,25 @@ iframe:hover {
     border: 2px solid black;
     border-radius: 5px;
 }
-.hi{
+.img_map1{
     position: absolute;
     right: 10px; 
     width: 280px;
     height: 250px;
     display: none;
 }
-.button_ctn:hover .hi{
+.img_map2{
+    position: absolute;
+    right: 570px;
+    top: 140px; 
+    width: 280px;
+    height: 250px;
+    display: none;
+}
+.button_ctn:hover .img_map1{
+    display: block;
+}
+.button_ctn:hover .img_map2{
     display: block;
 }
 

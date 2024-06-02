@@ -6,20 +6,23 @@ function loadNavbar() {
             document.getElementById('topnavbar').innerHTML = data;
             handlePageContent();
         });
+        
     fetch('floatbar.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('float_nav_container').innerHTML = html;
-            var navbar = document.getElementById('float_nav');
-            navbar.style.visibility = 'hidden';
-            navbar.style.opacity = 0;
-            var links = navbar.getElementsByTagName('a');
-            for (var i = 0; i < links.length; i++) {
-                links[i].style.color = 'black';
-            }
-            addScrollListener();
-            setImg();
-        });
+    .then(response => response.text())
+    .then(html => {
+        document.getElementById('float_nav_container').innerHTML = html;
+        var navbar = document.getElementById('float_nav');
+        navbar.style.visibility = 'hidden';
+        navbar.style.opacity = 0;   
+        var links = navbar.getElementsByTagName('a');
+        for (var i = 0; i < links.length; i++) {
+            links[i].style.color = 'black';
+        }
+        addScrollListener();
+        setImg();
+    });
+        
+    
 }
 
 function setPageNum(pageNumber){
@@ -64,7 +67,18 @@ function setImg(){
             news.style.textAlign = "center";
             news.style.fontSize = "25px";
             news.style.height = '170px';
-            break; 
+            break;
+        case 5: 
+            img.src = 'image/transportation/chihiro042.jpg';
+            img_container.style.display = 'block';
+            img.style.height = '500px';
+            img_container.style.height = '500px';
+            news.color = "white";
+            news.innerHTML = "<br>廢棄島的光陰歲月" ;
+            news.style.textAlign = "center";
+            news.style.fontSize = "25px";
+            news.style.height = '170px';
+            break;  
         default:
             img.src = 'image/homepage/spring3.jpg';
             break; 
