@@ -9,7 +9,7 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            background-image: url("./image/油屋.png");
+            background-image: url("./image/foodCourt/油屋.png");
             background-size: 100% 100%;
             background-repeat: no-repeat;
             background-position: center;
@@ -54,9 +54,8 @@
             width: 100%;
             height: 100%;
             clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-            animation-name: eat;
-            animation-duration: 0.7s;
-            animation-iteration-count: infinite;
+            animation: eat 0.7s infinite ;
+  
         }
         #pacmanFood {
             position: absolute;
@@ -66,9 +65,7 @@
             border-radius: 50%;
             top: 40%;
             left: 220px;
-            animation-name: food;
-            animation-duration: 0.7s;
-            animation-iteration-count: infinite;
+            animation: food 0.7s infinite ;
         }
 
         @keyframes eat {
@@ -108,7 +105,7 @@
         <tr style="height: 700px;">
             <td>
                 <div id="content">
-                    <img id="main-image" src="./image/九份.jpg" alt="九份" width="500px" usemap="#image-map" style="position:relative;">
+                    <img id="main-image" src="./image/foodCourt/九份.jpg" alt="九份" width="500px" usemap="#image-map" style="position:relative;">
         
                     <map name="image-map">
                         <area target="_blank" alt="阿婆魚羹" title="阿婆魚羹" href="#" coords="78,216,137,229" shape="rect" onclick="highlightArea(event, this)">
