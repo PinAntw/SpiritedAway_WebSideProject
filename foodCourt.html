@@ -19,11 +19,10 @@
         <!-- <br> -->
         
         <table id="content-container">
-            <tr style="height: 700px;">
+            <tr>
                 <td>
                     <div id="content">
-                        <img id="main-image" src="./image/foodCourt/九份.jpg" alt="九份" width="500px" usemap="#image-map" style="position:relative;">
-            
+                        <img id="main-image" src="./image/foodCourt/九份.jpg" alt="九份" usemap="#image-map">
                         <map name="image-map">
                             <area target="_blank" alt="阿婆魚羹" title="阿婆魚羹" href="#" coords="78,216,137,229" shape="rect" onclick="highlightArea(event, this)">
                             <area target="_blank" alt="舊道口牛肉麵" title="舊道口牛肉麵" href="#" coords="145,233,214,248" shape="rect" onclick="highlightArea(event, this)">
@@ -45,13 +44,13 @@
                     </div>
             
                 </td>
-                <td style="padding-left: 50px;">
+                <td id="pacemanAnimation">
                     <div id="pacman">
                         <div id="pacmanEye"></div>
                         <div id="pacmanMouth"></div>
                         <div id="pacmanFood"></div>
                     </div>
-                    <iframe id="info-iframe" style="display:none; width: 600px; height: 700px;"></iframe>
+                    <iframe id="info-iframe"></iframe>
                 </td>
             </tr>
             
