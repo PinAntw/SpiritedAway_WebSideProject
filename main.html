@@ -8,66 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- import google-font api -->
     <link rel="font-family" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap">
-
-
     <style>
-        .container-fluid {
-            padding: 0;
-            margin: 0;
-        }
-        .logo_text {
-            font-size: 35px;
-            font-family: "Noto Serif TC", serif;
-            letter-spacing: 25px; 
-            font-weight: 400;
-            writing-mode: vertical-rl;
-            text-orientation: upright;
-        }
-        .navbar {
-            position: absolute;
-            top: 0;
-            right: 0;
-            z-index: 1000; 
-            padding-right: 100px;
-            padding-top: 40px;
-            
-        }
-        .navbar-nav .nav-link {
-            writing-mode: vertical-rl;
-            color: #fff !important; 
-            font-weight: 550;
-            font-size: 16px;
-            font-family: "Noto Serif TC", serif;
-            margin: 8px;
-        }
-        .homepage_image {
-            opacity: 1; 
-            transition: opacity 1s ease-in-out, transform 6s linear; 
-            max-width: 100%; 
-            max-height: 100%;
-        }
-        .top_box{
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 140px;
-            height: 500px; 
-            background-color: white;
-            transform: translateX(-50%);
-            z-index: 1; 
-        }
-        .homepage_container {
-            position: relative;
-            display: flex;
-            justify-content: center; 
-            align-items: center; 
-            margin-left: 30px;
-            margin-top: 30px;
-            margin-right: 30px;
-            width: 1460px;
-            height: 680px;
-            overflow: hidden; 
-        }
         .tag_outer{
             display: inline-block;
             font-size: 14px;
@@ -117,6 +58,12 @@
                 linear
             ;
         }
+        .small-img {
+            max-width: 800px; 
+            height: auto;
+            padding-top: 20px;
+            padding-left: 200px;  
+        }
         @keyframes location_scail{
             from{
                 transform: scale(1);
@@ -127,14 +74,12 @@
                 filter: blur(10px);
             }
         }
-        
     
     </style>
     <script>
         var images_array = ["image/homepage/jiouFen.jpg", "image/homepage/tangWu.jpg", "image/homepage/tangWu2.jpg"];
         var changeImage_index = 0;
         
-
         function changeImage() {
             var hpimg = document.getElementById("homepage_image")
 
@@ -151,46 +96,20 @@
             }, 1000);
         }   
         setInterval(changeImage, 6500); 
+
     </script>
+    <script src="topnavbar.js"></script>
+    
+
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-transparent">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">關於油屋</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="foodCourt.html">美食街</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">應徵員工</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">交通資訊</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">場館介紹</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <div>
-        <div class = "top_box" style="max-width: 100%;max-height: 100%;">
-            <br><br><br><br>
-            <p class="logo_text">余柏村</p>
-        </div>
-        <div class="homepage_container">
-            <img class="homepage_image" id = "homepage_image" src="image/homepage/tangWu2.jpg"  width="2000" height="980" >
-        </div>
-        </div>
-    <div></div>
-    <div></div>
-    <br><br><br><br><br><br><br>
-    <div class="container">
+    <div id="float_nav_container" ></div>
+    <div id="topnavbar"></div>
+    <div id="content"></div>
+    <div id="news"></div>
+
+    <div class="container" >
         <div class="row">
             <div class="col-2">
                 <h3>今日快訊</h3>
@@ -221,34 +140,57 @@
         </div>
     </div>
     <br><br><br><br><br><br><br>
-    <div>
-        <img src="image/homepage/2world_map_mod.jpg" style="height: 700px; width: 1400px;padding-left: 140px">
+
+    <div class="container">
+        <h3>園區介紹</h3><hr>
+        <div class="row">
+            <div class="col">
+            <img src="image/homepage/world_map_mod.jpg" class="img-fluid" alt="Responsive image">
+            </div>
+        </div>
     </div>
+
     <br><br><br><br><br><br><br>
     <div class="container-fluid">
+        <h3 style="padding-left: 120px;">溫泉池介紹</h3><hr><br><br>
+        <div class="row">
+            <div class="col" >
+                <img src="image/homepage/springmap_mod.jpg" class="img-fluid small-img"  alt="Responsive image">
+            </div>
+            <div class="col" >
+                <h3>介紹</h3><br>
+                <p>充滿自然情趣的巨大露天浴場。浴池有434平方公尺、是本地區最大的浴場。<br><br>
+                    由於浴池太大、不同的地方甚至會有溫差。即使100個人同時入浴也不會覺得擁擠。保護隱私的體制完善、女性也可以放心的泡溫泉。<br><br>
+                    營業	9:00～20:00（季節不同營業時間也會隨之改變。需事先確認）<br>
+                    費用	成人NT. 700、兒童NT. 350、毛巾另售<br>
+                    聯繫電話	TEL:02xx-xx-xx
+                    </p>
+            </div>
+        </div>
+        <br><br><br><br>
         <div class="row" >
             <div class="col loc_col">
                 <div class="location_des_container">
                     <div class = "location_des_topbox">
-                        <p ></p>
+                        <p class="logo_text">美人湯</p>
                     </div>
-                    <img class="location_des_image" src="image/homepage/tangWu2.jpg" >
+                    <img class="location_des_image" src="image/homepage/spring1.jpg" >
                 </div>
             </div>
             <div class="col loc_col">
                 <div class="location_des_container">
                     <div class = "location_des_topbox">
-                        <p ></p>
+                        <p class="logo_text">食鹽泥溫泉</p>
                     </div>
-                    <img class="location_des_image" src="image/homepage/tangWu2.jpg">
+                    <img class="location_des_image" src="image/homepage/spring2.jpg">
                 </div>
             </div>
             <div class="col loc_col">
                 <div class="location_des_container">
                     <div class = "location_des_topbox">
-                        <p ></p>
+                        <p class="logo_text">硫磺溫泉</p>
                     </div>
-                    <img class="location_des_image" src="image/homepage/tangWu2.jpg">
+                    <img class="location_des_image" src="image/homepage/spring3.jpg">
                 </div>
             </div>
         </div>
@@ -256,27 +198,30 @@
             <div class="col">
                 <div>
                     <br>
-                    <h4>日本最古老的木造建築<br>湯宿建築</h4>
-                    <p>建於元祿四年，據說是日本現存最古老的木造溫泉旅館。本館具有很高的歷史價值，被指定為群馬縣重要文化財產，是罕見的至今仍保留著傳統溫泉建築氛圍的建築。</p>
+                    <h4>透明無色，具有滋潤肌膚的作用</h4>
+                    <p>碳酸氫鈉溫泉屬於透明無色、無臭的溫泉泉質種類，泉水中含有碳酸氫鈉，酸鹼值大部分在6~7之間，可以幫助肌膚柔嫩、滋潤光滑以及促進新陳代謝，就像天然化妝水一般，因此也有美人之湯的美譽。所以女生們若想養顏美容，不妨可以找機會體驗碳酸氫鈉溫泉唷！</p>
+                    <hr>
                 </div>
             </div>
             <div class="col">
                 <div>
                     <br>
-                    <h4>日本最古老的木造建築<br>湯宿建築</h4>
-                    <p>建於元祿四年，據說是日本現存最古老的木造溫泉旅館。本館具有很高的歷史價值，被指定為群馬縣重要文化財產，是罕見的至今仍保留著傳統溫泉建築氛圍的建築。</p>
+                    <h4>減少汗水蒸發、促進身體循環</h4>
+                    <p>食鹽泥溫泉泉質中含有鹽分，又被稱為鹽泉，像海水一樣帶有鹹鹹的味道，泡完之後鹽份會留在肌膚上，可以減少汗水蒸發、促進身體循環。對於常常手腳冰冷、體質虛寒的人而言，建議可以泡食鹽泥溫泉，讓身體更溫暖唷！</p>
+                    <hr>
                 </div>
             </div>
             <div class="col">
                 <div>
                     <br>
-                    <h4>日本最古老的木造建築<br>湯宿建築</h4>
-                    <p>建於元祿四年，據說是日本現存最古老的木造溫泉旅館。本館具有很高的歷史價值，被指定為群馬縣重要文化財產，是罕見的至今仍保留著傳統溫泉建築氛圍的建築。</p>
+                    <h4>淡白牛奶色，有療癒身心靈的功效</h4>
+                    <p>硫磺溫泉就是大家俗稱的「臭蛋泉」，每公升泉水中硫磺含量至少2mg以上，聞起來的味道較濃，屬於酸性溫泉的一種。通常呈現淡淡的、宛如牛奶般的色澤，可以放鬆、療癒身心靈，幫助新陳代謝，也因此被稱作「皮膚之湯」。</p>
+                    <hr>
+
                 </div>
             </div>
         </div>
     </div>
-    <br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br>
 
     <div style="text-align: center;">
@@ -288,35 +233,22 @@
     <div class="container">
         <div class="row">
             <div class="col-3"></div>
-            <div class="col-3">
-                <div class="row">
-                    <div class="col-4"></div>
-                    <div class="col-4"></div>
-                    <div class="col-4">聯絡我們</div>
-                </div>
+            <div class="col-3 "style="text-align: right;">
+                聯絡我們
             </div>
-            <div class="col-3" >
-                <div class="row">
-                    <div class="col-4">
-                        <svg role="img" viewBox="0 0 24 24" style="height: 24px;" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>                        
-                        <svg role="img" viewBox="0 0 24 24" style="height: 24px;" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-                        <svg role="img" viewBox="0 0 24 24" style="height: 24px;" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>                           </div>
-                    <div class="col-4"> </div>
-                    <div class="col-4"></div>
-                </div>
+            <div class="col-3" >  
+                <svg role="img" viewBox="0 0 24 24" style="height: 24px;" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg>                        
+                <svg role="img" viewBox="0 0 24 24" style="height: 24px;" xmlns="http://www.w3.org/2000/svg" ><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
+                <svg role="img" viewBox="0 0 24 24" style="height: 24px;" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg>                              
             </div>
             <div class="col-3"></div>
         </div>
     </div>
-    <br><br><br><br><br><br><br>
-
+    <br><br><br>
 
     <div style="background-color: #f8f8f8; height: 40px;text-align: center;padding-top: 10px; font-weight: 500;font-size: 14px;">
     油屋，關心您泡湯的地方 
     </div>
-
-
-    
 
 </body>
 </html>
