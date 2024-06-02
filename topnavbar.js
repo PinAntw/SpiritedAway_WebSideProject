@@ -50,9 +50,9 @@ function setImg(){
             img_container.style.display = 'block';
             img.style.height = '500px';
             img_container.style.height = '500px';
-            news.innerHTML = "員工應徵 / 加入我們吧!" ;
+            news.innerHTML = "<br>加入我們，帶給你最難忘的旅程!" ;
             news.style.textAlign = "center";
-            news.style.fontSize = "35px";
+            news.style.fontSize = "25px";
             news.style.height = '170px';
             break;
         case 4: 
@@ -60,9 +60,9 @@ function setImg(){
             img_container.style.display = 'block';
             img.style.height = '500px';
             img_container.style.height = '500px';
-            news.innerHTML = "員工應徵 / 加入我們吧!" ;
+            news.innerHTML = "<br>為想前來的顧客提供的交通指南" ;
             news.style.textAlign = "center";
-            news.style.fontSize = "35px";
+            news.style.fontSize = "25px";
             news.style.height = '170px';
             break; 
         default:

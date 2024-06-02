@@ -352,10 +352,12 @@ iframe:hover {
 }
 
 .logo_text {
-    font-size: 35px;
+    font-size: 25px;
     font-family: "Noto Serif TC", serif;
     letter-spacing: 25px; 
     font-weight: 400;
+    padding-left: 20px;
+    padding-top: 10px;
     writing-mode: vertical-rl;
     text-orientation: upright;
 }
@@ -550,4 +552,8 @@ iframe:hover {
 #float_nav {
     height: 10%; 
     background-color: #f8f8f8;
+    font-weight: bold;
+}
+.tangWulogosmall{
+    height: 40px;
 }
