@@ -21,32 +21,6 @@ function loadNavbar() {
             setImg();
         });
 }
-function getQueryParam(param) {
-    let urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(param);
-}
-
-function handlePageContent() {
-    let pageNumber = getQueryParam('page');
-    let contentDiv = document.getElementById('content');
-    switch (pageNumber) {
-        case '2':
-            contentDiv.innerHTML = '<h1>美食街</h1><p>這是美食街的內容。</p>';
-            break;
-        case '3':
-            contentDiv.innerHTML = '<h1>應徵員工</h1><p>這是應徵員工的內容。</p>';
-            break;
-        case '4':
-            contentDiv.innerHTML = '<h1>交通資訊</h1><p>這是交通資訊的內容。</p>';
-            break;
-        case '5':
-            contentDiv.innerHTML = '<h1>場館介紹</h1><p>這是場館介紹的內容。</p>';
-            break;
-        default:
-            contentDiv.innerHTML = '';
-            break;
-    }
-}
 
 function setPageNum(pageNumber){
     localStorage.setItem('pageNumber', pageNumber);

@@ -130,74 +130,74 @@ function sendForm_button(msg){
 }
 
 function lastStep(msg){
-var ctn = document.getElementById("container_start")
-var div = document.createElement('div');
-div.id = 'sheetemployee';
-div.style.position = 'relative';
-var img = document.createElement('img');
-img.style.height = '500px';
-img.src = 'image/employee/sheetform.png';
-div.appendChild(img);
-var formctn = document.createElement('div');
-formctn.id = 'formctn';
-formctn.style.position = "absolute";
-formctn.style.top = "200px";
-formctn.style.left = "50px";
-formctn.style.height = "100px";
-formctn.style.width = "100px";
+    var ctn = document.getElementById("container_start")
+    var div = document.createElement('div');
+    div.id = 'sheetemployee';
+    div.style.position = 'relative';
+    var img = document.createElement('img');
+    img.style.height = '500px';
+    img.src = 'image/employee/sheetform.png';
+    div.appendChild(img);
+    var formctn = document.createElement('div');
+    formctn.id = 'formctn';
+    formctn.style.position = "absolute";
+    formctn.style.top = "200px";
+    formctn.style.left = "50px";
+    formctn.style.height = "100px";
+    formctn.style.width = "100px";
 
-var formEmp = document.createElement('form');
-var textareaEmp = document.createElement('textarea');
-textareaEmp.className = 'vertical-input';
-textareaEmp.style.writingMode = 'vertical-rl';
-textareaEmp.style.width = '2.0em';
-textareaEmp.style.height = '85px';
-textareaEmp.style.resize = 'none';
-textareaEmp.style.backgroundColor = "#F3EBDE";
-textareaEmp.style.fontWeight = "bold";
-textareaEmp.style.letterSpacing = "10px";
-textareaEmp.disabled = true; 
-textareaEmp.style.border = 'none';
-var msg = msg.slice(-1);
-textareaEmp.value = msg;
+    var formEmp = document.createElement('form');
+    var textareaEmp = document.createElement('textarea');
+    textareaEmp.className = 'vertical-input';
+    textareaEmp.style.writingMode = 'vertical-rl';
+    textareaEmp.style.width = '2.0em';
+    textareaEmp.style.height = '85px';
+    textareaEmp.style.resize = 'none';
+    textareaEmp.style.backgroundColor = "#F3EBDE";
+    textareaEmp.style.fontWeight = "bold";
+    textareaEmp.style.letterSpacing = "10px";
+    textareaEmp.disabled = true; 
+    textareaEmp.style.border = 'none';
+    var msg = msg.slice(-1);
+    textareaEmp.value = msg;
 
-var btn_send = document.createElement('button');
-btn_send.style.marginTop = '150px';
-btn_send.style.width = '80px';
-btn_send.style.height = '30px';
-btn_send.innerText = "完成契約";
-btn_send.style.fontWeight = "bold";
-btn_send.style.color = "white";
-btn_send.style.backgroundColor = "red";
-btn_send.onclick = function() {
-            div.parentNode.removeChild(div);
-            addEmployee(msg);
-        };
+    var btn_send = document.createElement('button');
+    btn_send.style.marginTop = '150px';
+    btn_send.style.width = '80px';
+    btn_send.style.height = '30px';
+    btn_send.innerText = "完成契約";
+    btn_send.style.fontWeight = "bold";
+    btn_send.style.color = "white";
+    btn_send.style.backgroundColor = "red";
+    btn_send.onclick = function() {
+                div.parentNode.removeChild(div);
+                addEmployee(msg);
+            };
 
-formEmp.appendChild(textareaEmp);
-formctn.appendChild(formEmp);
-formctn.appendChild(btn_send);
-div.appendChild(formctn);
-ctn.appendChild(div);
+    formEmp.appendChild(textareaEmp);
+    formctn.appendChild(formEmp);
+    formctn.appendChild(btn_send);
+    div.appendChild(formctn);
+    ctn.appendChild(div);
 }
 
 function addEmployee(name){
-var co = document.getElementById("employeeadd");
-var newCard = document.createElement('div');
-newCard.className = 'col-3';
-var cardContent = `
-<div class="card" style="width: 18rem;">
-    <img src="image/employee/boss.png" class="card-img-top">
-    <div class="card-body">
-        <h5 class="card-title">`+ name + `</h5>
-        <p class="card-text">一個沒有名字的人類.</p>
+    var co = document.getElementById("employeeadd");
+    var newCard = document.createElement('div');
+    newCard.className = 'col-3';
+    var cardContent = `
+    <div class="card" style="width: 18rem;">
+        <img src="image/employee/boss.png" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">`+ name + `</h5>
+            <p class="card-text">一個沒有名字的人類.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">資歷: 新人</li>
+            <li class="list-group-item">工作: 清掃廁所</li>
+        </ul>
     </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">資歷: 新人</li>
-        <li class="list-group-item">工作: 清掃廁所</li>
-    </ul>
-</div>
-`;
-newCard.innerHTML = cardContent;
-co.appendChild(newCard);
+    `;
+    newCard.innerHTML = cardContent;
+    co.appendChild(newCard);
 }
