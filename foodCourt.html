@@ -3,101 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <style>
-
-        #background-container {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background-image: url("./image/foodCourt/油屋.png");
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0.1;
-            z-index: -1; 
-        }
-
-        #content-container {
-            text-align: start;
-            padding-top: 15%;
-            padding-left: 15%;
-        }
-        
-
-        .highlight {
-            position: absolute;
-            border: 2px solid #ff0;
-            background-color: rgba(255, 255, 0, 0.5);
-        }
-
-        #pacman {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #f2d648;
-            position: relative;
-            margin-top: 20px;
-            display: none; 
-        }
-        #pacmanEye {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            top: 20px;
-            right: 40px;
-            background: #333333;
-        }
-        #pacmanMouth {
-            background: #000;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-            animation: eat 0.7s infinite ;
-  
-        }
-        #pacmanFood {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: green;
-            border-radius: 50%;
-            top: 40%;
-            left: 220px;
-            animation: food 0.7s infinite ;
-        }
-
-        @keyframes eat {
-            0% {
-                clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-            }
-            25% {
-                clip-path: polygon(100% 60%, 44% 48%, 100% 40%);
-            }
-            50% {
-                clip-path: polygon(100% 50%, 44% 48%, 100% 50%);
-            }
-            75% {
-                clip-path: polygon(100% 59%, 44% 48%, 100% 35%);
-            }
-            100% {
-                clip-path: polygon(100% 74%, 44% 48%, 100% 21%);
-            }
-        }
-        @keyframes food {
-            0% {
-                transform: translateX(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(-100px);
-                opacity: 0;
-            }
-        }
-    </style>
-    
-    <title>Food</title>
+    <link rel="stylesheet" href="./style.css">
+    <title>Food Court</title>
 </head>
 <body>
     <div id="background-container"></div> 
@@ -134,63 +41,11 @@
                     <div id="pacmanMouth"></div>
                     <div id="pacmanFood"></div>
                 </div>
-                <iframe id="info-iframe" style="display:none; width: 500px; height: 700px;"></iframe>
+                <iframe id="info-iframe" style="display:none; width: 550px; height: 700px;"></iframe>
             </td>
         </tr>
         
     </table>
-    <script>
-        function pacmanAnimation(callback) {
-            const pacman = document.getElementById('pacman');
-            const pacmanMouth = document.getElementById('pacmanMouth');
-            const pacmanFood = document.getElementById('pacmanFood');
-
-            pacman.style.display = 'block';
-            pacmanMouth.style.animationPlayState = 'running';
-            pacmanFood.style.animationPlayState = 'running';
-
-            setTimeout(() => {
-                pacmanMouth.style.animationPlayState = 'paused';
-                pacmanFood.style.animationPlayState = 'paused';
-                pacman.style.display = 'none';
-                if (callback) callback();
-            }, 3000); 
-        }
-
-        function highlightArea(event, area) {
-            var frame = document.getElementById('info-iframe');
-            frame.style.display = 'none';
-
-            event.preventDefault(); // 一開始不要打開連結
-
-            document.querySelectorAll('.highlight').forEach(temp => temp.remove());
-
-            const coords = area.coords.split(',').map(coord => parseInt(coord));
-
-            const highlight = document.createElement('div');
-            highlight.classList.add('highlight');
-            
-            const [x1, y1, x2, y2] = coords;
-            highlight.style.left = `${x1}px`;
-            highlight.style.top = `${y1}px`;
-            highlight.style.width = `${x2 - x1}px`;
-            highlight.style.height = `${y2 - y1}px`;
-            
-            const img = document.getElementById('main-image');
-            const imgRect = img.getBoundingClientRect();
-            highlight.style.left = `${imgRect.left + window.scrollX + coords[0]}px`;
-            highlight.style.top = `${imgRect.top + window.scrollY + coords[1]}px`;
-
-            document.body.appendChild(highlight);
-
-            var storeName = area.alt + '.html'
-            console.log(storeName)
-            pacmanAnimation(() => {
-                const iframe = document.getElementById('info-iframe');
-                iframe.style.display = 'block';
-                iframe.src = './foodDescription/' + storeName;
-            });
-        }
-    </script>
 </body>
+<script src="./script_foodCourt.js" defer></script>
 </html>
